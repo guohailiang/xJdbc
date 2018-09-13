@@ -1,0 +1,12 @@
+create database jdbctest;
+use jdbctest;
+CREATE TABLE emp(
+   empno            INT(4)  PRIMARY KEY,
+   ename            VARCHAR(10),
+   job              VARCHAR(9),
+   hiredate         DATE,
+   sal              FLOAT(7,2)
+);
+insert into emp values (600,'ZhangSan','Boss','2001-09-16',4000.0);
+insert into emp values (601,'LiSi','LM','2003-05-16',3000.0);
+insert into emp values (602,'WangWu','PL','2005-04-06',2000.0);
