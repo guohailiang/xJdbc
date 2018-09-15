@@ -1,10 +1,18 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 
 public class JdbcDemo {
+
+    public static void executeSql(Connection con, String sql){
+        PreparedStatement psql;
+        try {
+            psql = con.prepareStatement(sql);
+            psql.executeUpdate();
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         //声明Connection对象
@@ -48,6 +56,17 @@ public class JdbcDemo {
                 //输出结果
                 System.out.println(id + "\t" + job);
             }
+
+            /*插入数据*/
+            executeSql(con,"insert into emp (empno,ename,job,hiredate,sal) " +
+                    "value(3234,'wanggang','manager','2012-10-09',2000.0)");
+
+            /*更新数据*/
+            executeSql(con,"update emp set sal=2100.0 where empno=3234");
+
+            /*删除数据*/
+            executeSql(con,"delete from emp where empno=3233");
+
             rs.close();
             con.close();
         } catch(ClassNotFoundException e) {
@@ -63,6 +82,10 @@ public class JdbcDemo {
         }finally{
             System.out.println("数据库数据成功获取！！");
         }
+
+
+
+
 
 
     }
