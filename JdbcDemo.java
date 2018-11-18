@@ -1,6 +1,6 @@
-import java.sql.*;
+﻿import java.sql.*;
 
-
+/**/
 public class JdbcDemo {
 
     public static void executeSql(Connection con, String sql){
